@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
+import {fetchCountries} from '../actions'
 
 
 class SearchBar extends Component {
 
     componentWillMount(){
-
+        this.props.fetchCountries()
     }
 
 
@@ -19,6 +21,7 @@ renderSelectCountries(){
 }
 
     render() {
+        console.log(this.props.countries)
         return (
             <form>
                 {this.renderSelectCountries()}
@@ -27,4 +30,8 @@ renderSelectCountries(){
     }
 }
 
-export default SearchBar;
+const mapStateToProps = state => ({
+    countries: state.countries
+})
+
+export default connect(mapStateToProps, {fetchCountries})(SearchBar);

@@ -1,5 +1,6 @@
 import {combineReducers} from 'redux';
+import countries from './reducerCountries';
 
 export default combineReducers({
-    state:()=>'hello'
+    countries
 })
